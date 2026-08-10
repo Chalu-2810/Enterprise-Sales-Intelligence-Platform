@@ -1,0 +1,45 @@
+# Version control / editor
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Python runtime cruft
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments (never ship these -- deps are installed fresh in the image)
+venv/
+.venv/
+env/
+ENV/
+
+# Docs-only assets not needed at runtime (~1.3MB of screenshots)
+screenshots/
+README.md
+
+# Test suite: has no purpose in the production image (Task 3's "keep image
+# size reasonable" requirement) -- tests run in CI/locally, not in the
+# deployed container.
+tests/
+pytest.ini
+requirements-dev.txt
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local secrets / env files -- never bake these into an image layer
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Generated report exports and logs (regenerated at runtime, and persisted
+# via the reports volume in docker-compose rather than baked into the image)
+reports/*.log
+reports/*.pdf
+reports/*.xlsx
+reports/*.csv
+
+.DS_Store

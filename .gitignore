@@ -1,0 +1,36 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Logs
+reports/*.log
+*.log
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Generated report exports (keep the folder, ignore generated files)
+reports/*.pdf
+reports/*.xlsx
+reports/*.csv
+!reports/.gitkeep
+
+# Environment variables
+.env
+
+# Jupyter
+.ipynb_checkpoints/

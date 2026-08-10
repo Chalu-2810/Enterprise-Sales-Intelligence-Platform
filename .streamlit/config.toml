@@ -1,0 +1,14 @@
+[server]
+headless = true
+port = 8501
+enableCORS = false
+
+[browser]
+gatherUsageStats = false
+
+[client]
+# Prevents full Python tracebacks (file paths, SQL, internals) from being
+# rendered in the browser if any page hits an unhandled exception. Pages
+# that catch exceptions explicitly are unaffected; this is the safety net
+# for the ones that don't.
+showErrorDetails = false

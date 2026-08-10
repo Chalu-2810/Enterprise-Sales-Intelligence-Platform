@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Enterprise Sales Intelligence Platform -- Custom Theme
+   Two-tier palette per the Phase 10 UX guidelines:
+   graphical colors stay saturated for charts/icons; text uses darkened,
+   WCAG-AA-checked variants for small copy.
+   ========================================================================== */
+
+:root {
+  --navy: #0B2545;
+  --steel: #3E7CB1;
+  --teal: #4C9A8B;
+  --coral: #D9695F;
+  --slate: #8A94A6;
+
+  --steel-text: #376F9F;
+  --teal-text: #3C7B6F;
+  --coral-text: #B85950;
+  --slate-text: #6E7684;
+
+  --bg: #F5F7FA;
+  --card: #FFFFFF;
+  --text: #1B1F27;
+  --border: #E9ECF2;
+}
+
+.dark-mode {
+  --bg: #0F1620;
+  --card: #1A2333;
+  --text: #E7ECF3;
+  --border: #2A3547;
+}
+
+html, body, [class*="css"] {
+  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+}
+
+/* Sidebar branding block */
+.sidebar-brand {
+  padding: 18px 4px 14px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  margin-bottom: 12px;
+}
+.sidebar-brand h2 {
+  color: #fff; font-size: 17px; font-weight: 700; margin: 0; letter-spacing: 0.01em;
+}
+.sidebar-brand p {
+  color: rgba(255,255,255,0.6); font-size: 11px; margin: 4px 0 0 0;
+}
+
+/* KPI Card */
+.kpi-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(11,37,69,0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(11,37,69,0.14);
+}
+.kpi-card .accent-bar {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 10px 0 0 10px;
+}
+.kpi-card .accent-bar.pos { background: var(--teal); }
+.kpi-card .accent-bar.neg { background: var(--coral); }
+.kpi-card .accent-bar.neutral { background: var(--steel); }
+.kpi-label {
+  font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--slate-text); margin-bottom: 6px;
+}
+.kpi-value {
+  font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 700; color: var(--navy);
+}
+.dark-mode .kpi-value { color: #fff; }
+.kpi-delta { font-size: 12px; font-weight: 600; margin-top: 4px; }
+.kpi-delta.pos { color: var(--teal-text); }
+.kpi-delta.neg { color: var(--coral-text); }
+
+/* Section headers */
+.section-title {
+  font-size: 15px; font-weight: 700; color: var(--navy); margin: 6px 0 2px 0;
+}
+.dark-mode .section-title { color: #fff; }
+.section-sub { font-size: 11.5px; color: var(--slate-text); margin-bottom: 10px; }
+
+/* Insight / alert band */
+.insight-band {
+  background: linear-gradient(90deg, rgba(76,154,139,0.08), rgba(76,154,139,0.02));
+  border-left: 4px solid var(--teal);
+  border-radius: 6px; padding: 12px 16px; font-size: 13px; margin: 10px 0;
+}
+.alert-band {
+  background: linear-gradient(90deg, rgba(217,105,95,0.09), rgba(217,105,95,0.02));
+  border-left: 4px solid var(--coral); border-radius: 6px; padding: 12px 16px; font-size: 13px; margin: 10px 0;
+}
+
+/* Badge */
+.badge {
+  display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 10.5px; font-weight: 600;
+}
+.badge-A { background: rgba(76,154,139,0.15); color: var(--teal-text); }
+.badge-B { background: rgba(62,124,177,0.15); color: var(--steel-text); }
+.badge-C { background: rgba(217,105,95,0.15); color: var(--coral-text); }
+
+/* Login card */
+.login-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 32px 36px; max-width: 420px; margin: 40px auto; box-shadow: 0 8px 30px rgba(11,37,69,0.12);
+}
+.login-title { font-size: 20px; font-weight: 700; color: var(--navy); text-align:center; margin-bottom: 4px;}
+.login-sub { font-size: 12.5px; color: var(--slate-text); text-align:center; margin-bottom: 22px;}
+
+hr { border-color: var(--border) !important; }

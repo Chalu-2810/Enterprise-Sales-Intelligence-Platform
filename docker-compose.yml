@@ -1,0 +1,52 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      # DATABASE_URL left unset here on purpose -- the app defaults to the
+      # bundled SQLite file. Set it (and add the driver to requirements.txt)
+      # to point at PostgreSQL instead; no code changes required.
+      - DATABASE_URL=${DATABASE_URL:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - SESSION_TIMEOUT_MINUTES=${SESSION_TIMEOUT_MINUTES:-60}
+    volumes:
+      # Named volumes: on first run Docker seeds them from the image's
+      # existing /app/database and /app/reports content (so the bundled
+      # sample DB and demo-user seed still work out of the box), then
+      # persists changes (new users, lockouts, exports, logs) across
+      # container rebuilds/restarts.
+      - db_data:/app/database
+      - reports_data:/app/reports
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+    restart: unless-stopped
+
+  # --- Optional future step, not enabled -----------------------------------
+  # Only add this once there's a real need for concurrent multi-user writes
+  # (SQLite is single-writer). To switch: uncomment this service, set
+  # DATABASE_URL=postgresql+psycopg://sales:sales@postgres:5432/sales in
+  # your .env, and add `psycopg[binary]` to requirements.txt.
+  #
+  # postgres:
+  #   image: postgres:16-alpine
+  #   environment:
+  #     - POSTGRES_USER=sales
+  #     - POSTGRES_PASSWORD=sales
+  #     - POSTGRES_DB=sales
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U sales"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+
+volumes:
+  db_data:
+  reports_data:
+  # postgres_data:
