@@ -1,5 +1,8 @@
 # 📊 Enterprise Sales Intelligence Platform
 
+
+live demo: https://enterprise-sales-intelligence-platform-ycww7ux4gmappy2dnnpuhpf.streamlit.app/
+
 An **AI-Powered Enterprise Sales Intelligence Platform** — a fully working Streamlit application (not a static dashboard mockup) built on top of a real 128,000+ row star-schema SQLite database, with live machine learning models, a natural-language query engine, and automated PDF/Excel reporting.
 
 Every number in this app is computed live from the database at request time. Every ML model (forecasting, segmentation, churn, anomaly detection, recommendations) trains on the actual data when you click "Run" — nothing is pre-computed or hardcoded.
